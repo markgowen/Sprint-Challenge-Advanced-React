@@ -1,24 +1,70 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+// Components
+import PlayerList from './components/PlayerList';
+import InputForm from './components/InputForm';
+
+// Material UI
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
+// Styles
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  toolbar: {
+    backgroundColor: '#0056a3'
+  },
+  heading: {
+    background: '#fff',
+    margin: '30px'
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    margin: '0 auto'
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200
+  },
+  dense: {
+    marginTop: 19
+  },
+  menu: {
+    width: 200
+  },
+  favPlayer: {
+    textAlign: 'center'
+  }
+}));
+
 function App() {
+  
+
+  const classes = useStyles();
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar className={classes.toolbar} variant="dense">
+          <Typography variant="h6" color="inherit" data-testid="AppBar-Text">
+            Women's World Cup
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Typography className={classes.heading} data-testid="Heading-Text">
+        Players Ranked by Search Interest from Google Trends, June-July 2019
+      </Typography>
+      <InputForm />
+      <PlayerList />
     </div>
   );
 }
