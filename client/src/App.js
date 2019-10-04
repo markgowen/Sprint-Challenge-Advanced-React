@@ -3,7 +3,7 @@ import './App.css';
 
 // Components
 import PlayerList from './components/PlayerList';
-import Input from './hooks/Input';
+import InputForm from './components/InputForm';
 
 // Material UI
 import clsx from 'clsx';
@@ -47,14 +47,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function App() {
-  const [values, setValues] = React.useState({
-    name: ''
-  });
+  
 
   const classes = useStyles();
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
-  };
+  
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -67,7 +63,7 @@ function App() {
       <Typography className={classes.heading} data-testid="Heading-Text">
         Players Ranked by Search Interest from Google Trends, June-July 2019
       </Typography>
-      <Input />
+      <InputForm />
       <PlayerList />
     </div>
   );

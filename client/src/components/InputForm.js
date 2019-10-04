@@ -1,11 +1,7 @@
-import React from 'react';
+import React from 'react'
+import { useInput } from '../hooks/useInput'
 
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 // Styles
@@ -32,15 +28,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Input() {
-  const [values, setValues] = React.useState({
-    name: ''
-  });
+function InputForm() {
+  const [favPlayer, handleFavPlayer, setFavPlayer] = useInput('favPlayer', '');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
+
+  const clearForm = e => {
+    e.preventDefault();
+    setFavPlayer('');
+  };
 
   const classes = useStyles();
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
-  };
+  
   return (
     <div>
       <form className={classes.container} noValidate autoComplete="off">
@@ -48,14 +49,14 @@ function Input() {
           id="standard-name"
           label="Favorite Player"
           className={classes.textField}
-          value={values.name}
-          onChange={handleChange('name')}
+          value={favPlayer}
+          onChange={handleFavPlayer}
           margin="normal"
         />
       </form>
-      <div className={classes.favPlayer}>{values.name}</div>
+      <div className={classes.favPlayer}>{favPlayer}</div>
     </div>
   );
 }
 
-export default Input;
+export default InputForm;
