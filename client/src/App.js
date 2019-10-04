@@ -9,8 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Switch from '@material-ui/core/Switch';
-
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -33,18 +31,12 @@ function App() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar className={classes.toolbar} variant="dense">
-          <Typography variant="h6" color="inherit">
+          <Typography variant="h6" color="inherit" data-testid='AppBar-Text'>
             Women's World Cup
           </Typography>
-          <Switch
-            defaultChecked
-            value="checkedF"
-            color="default"
-            inputProps={{ 'aria-label': 'checkbox with default color' }}
-          />
         </Toolbar>
       </AppBar>
-      <Typography className={classes.heading}>
+      <Typography className={classes.heading} data-testid='Heading-Text'>
         Players Ranked by Search Interest from Google Trends, June-July 2019
       </Typography>
       <PlayerList />
